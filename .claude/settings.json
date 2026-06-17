@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "allow": [
+      "Read(./**)",
+      "Edit(./**)",
+      "Write(./**)",
+      "Bash(python3:*)",
+      "Bash(python:*)",
+      "Bash(pip3 install:*)",
+      "Bash(make:*)",
+      "Bash(bash packaging/:*)",
+      "Bash(chmod:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(mv:*)",
+      "Bash(hdiutil:*)",
+      "Bash(codesign:*)",
+      "Bash(xcrun notarytool:*)",
+      "Bash(curl:*)"
+    ],
+    "deny": [
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)"
+    ]
+  }
+}

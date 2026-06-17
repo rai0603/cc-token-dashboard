@@ -1,0 +1,34 @@
+CC Token 儀表板 — 安裝說明
+==========================
+
+需求：macOS、python3（建議 Homebrew）。
+
+A. 最省事（免編譯）
+   1) pip3 install rumps        # 只需一次
+   2) make quick-app            # 產生 dist/quick/CCTokenDashboard.app
+   3) 把該 .app 拖進「應用程式」；第一次右鍵→「打開」過 Gatekeeper
+      （macOS 15+ 改到「系統設定→隱私權與安全性」按「仍要打開」）
+
+B. 自包含（像正式安裝程式，不依賴系統 Python）
+   1) make app                  # 或雙擊 packaging/build_app.command
+   2) 在 dist/ 取得 CCTokenDashboard.app 與 .dmg；本機產生不會被隔離，可直接雙擊
+
+開機常駐：系統設定 → 一般 → 登入項目 → 「+」加入該 App。
+
+資料來源（statusLine 收集器，與 App 各自獨立）：
+   最簡單：打開儀表板，照畫面「設定 statusLine 收集器（一次性）」區塊，
+   把那段 JSON 合併進 ~/.claude/settings.json 即可——指令路徑會自動填好。
+
+   手動設定的話，command 指向以下任一個「可直接執行的鬆散 .py」：
+     - 本專案：  python3 <本資料夾>/src/cc_token_dashboard.py status
+     - 安裝後的 App：
+        python3 /Applications/CCTokenDashboard.app/Contents/Resources/cc_token_dashboard.py status
+   （status 模式純標準庫，用系統 python3 即可。打包時會在 Resources 放一份
+     鬆散副本，所以 App 內這條路徑可用；勿用 .../lib/python314.zip/ 內的 .pyc。）
+
+   專案分流：收集器以「目前工作資料夾」(current_dir) 判定專案，並往上找
+   .git/.claude/package.json 等專案根標記。所以即使你固定在家目錄啟動 claude，
+   只要請它進某專案工作，token 就會自動歸到該專案，不必 cd 啟動、不必帶環境變數。
+
+為何沒給簽好的安裝檔：.app 的編譯/簽章/公證只能在 macOS 上做，無法於非 Mac 環境產生；
+故提供能在你 Mac 上一鍵產生正式 App 的建置流程。有 Developer ID 可再加 codesign + notarytool。
