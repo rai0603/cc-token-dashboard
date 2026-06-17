@@ -11,7 +11,11 @@
 
 English version → [README.en.md](README.en.md)
 
-![儀表板截圖](docs/dashboard.png)
+![各專案即時 token 折線與 KPI](docs/dashboard.png)
+
+![各專案本日產出、產出占比與明細表](docs/breakdown.png)
+
+![折線圖 hover 各專案當分鐘明細](docs/chart-tooltip.png)
 
 ---
 

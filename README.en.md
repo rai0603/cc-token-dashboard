@@ -11,7 +11,11 @@
 
 中文版 → [README.md](README.md)
 
-![dashboard](docs/dashboard.png)
+![Live per-project token line chart and KPIs](docs/dashboard.png)
+
+![Per-project daily output, share doughnut and detail table](docs/breakdown.png)
+
+![Hover tooltip showing each project's output for that minute](docs/chart-tooltip.png)
 
 ---
 
